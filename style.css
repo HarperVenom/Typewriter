@@ -1,0 +1,32 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.text-field {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -40vh);
+  width: 300px;
+  max-height: 70%;
+  background-color: rgb(215, 215, 215);
+  padding: 3rem;
+  border: 3px solid rgb(156, 156, 156);
+  border-radius: 5px;
+
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.letter {
+  display: inline-block;
+  font-size: 24px;
+
+  transition: scale 0.2s ease;
+}
+.prepare {
+  display: absolute;
+  z-index: 2;
+  scale: 5;
+}
