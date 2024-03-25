@@ -9,26 +9,14 @@ window.addEventListener("keydown", (e) => {
   if (key === "Backspace") {
     if (textField.lastElementChild != null) {
       textField.removeChild(textField.lastElementChild);
-      if (!backspaceSound.paused) {
-        backspaceSound.cloneNode(true).play();
-      } else {
-        backspaceSound.play();
-      }
+      playSound(backspaceSound,0.05);
     }
   } else if (key === "Enter") {
     textField.appendChild(document.createElement("br"));
-    if (!enterSound.paused) {
-      enterSound.cloneNode(true).play();
-    } else {
-      enterSound.play();
-    }
+    playSound(enterSound,0.05);
   } else {
     addLetter(key);
-    if (!keyDownSound.paused) {
-      keyDownSound.cloneNode(true).play();
-    } else {
-      keyDownSound.play();
-    }
+    playSound(keyDownSound,0.05);
   }
 });
 
@@ -41,4 +29,15 @@ function addLetter(key) {
     newLetter.classList.remove("prepare");
   }, 50);
   textField.appendChild(newLetter);
+}
+
+function playSound(sound, volume) {
+  sound.volume = volume;
+  if (!sound.paused) {
+    let clone = sound.cloneNode(true);
+    clone.volume = volume;
+    clone.play();
+  } else {
+    sound.play();
+  }
 }
