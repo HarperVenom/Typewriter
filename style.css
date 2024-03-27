@@ -1,6 +1,9 @@
 body {
   height: 100vh;
   overflow: hidden;
+  position: relative;
+
+  margin: 0;
 }
 
 .text-field {
@@ -8,12 +11,16 @@ body {
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -40vh);
-  width: 300px;
+  width: 90%;
+  min-width: 300px;
+  max-width: 500px;
+  /* margin: 3rem; */
   max-height: 70%;
   background-color: rgb(215, 215, 215);
-  padding: 10rem;
+  padding: 5rem;
   border: 3px solid rgb(156, 156, 156);
   border-radius: 5px;
+  box-sizing: border-box;
 
   word-wrap: break-word;
   overflow: auto;
@@ -27,6 +34,5 @@ body {
 }
 .prepare {
   display: absolute;
-  z-index: 2;
   scale: 5;
 }

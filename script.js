@@ -9,20 +9,25 @@ window.addEventListener("keydown", (e) => {
   if (key === "Backspace") {
     if (textField.lastElementChild != null) {
       textField.removeChild(textField.lastElementChild);
-      playSound(backspaceSound,0.05);
+      playSound(backspaceSound);
     }
   } else if (key === "Enter") {
     textField.appendChild(document.createElement("br"));
-    playSound(enterSound,0.05);
-  } else {
-    addLetter(key);
-    playSound(keyDownSound,0.05);
+    playSound(enterSound);
+  } else if (key === " ") {
+    addLetter('&nbsp');
+    playSound(enterSound);
+  }else {
+    if (key.length === 1 || !isNaN(key)) {
+      addLetter(key);
+      playSound(keyDownSound);
+    } 
   }
 });
 
 function addLetter(key) {
   let newLetter = document.createElement("span");
-  newLetter.innerText = key;
+  newLetter.innerHTML = key;
   newLetter.classList.add("letter");
   newLetter.classList.add("prepare");
   setTimeout(() => {
@@ -31,7 +36,7 @@ function addLetter(key) {
   textField.appendChild(newLetter);
 }
 
-function playSound(sound, volume) {
+function playSound(sound, volume = 0.1) {
   sound.volume = volume;
   if (!sound.paused) {
     let clone = sound.cloneNode(true);
